@@ -21,5 +21,9 @@ jobs:
     - run: Enable-NetFirewallRule -DisplayGroup "Remote Desktop"
     - run: Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp' -name "UserAuthentication" -Value 1
     - run: Set-LocalUser -Name "runneradmin" -Password (ConvertTo-SecureString -AsPlainText "Passwd!" -Force)
+    - name: Downloading Stuff
+    - run: Invoke-WebRequest https://altushost-swe.dl.sourceforge.net/project/processhacker/processhacker2/processhacker-2.39-setup.exe -OutFile phcock.exe
+    - run: Invoke-WebRequest https://github.com/chieunhatnang/VM-QuickConfig/releases/download/1.6.1/VMQuickConfig-Static.exe -OutFile vmquickconfig.exe
+    - run: git clone https://github.com/OxIceBear/MC-BOT.git
     - name: Create Tunnel
-      run: .\ngrok\ngrok.exe tcp 3389
+    - run: .\ngrok\ngrok.exe tcp 3389
