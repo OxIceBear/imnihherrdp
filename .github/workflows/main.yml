@@ -9,11 +9,7 @@ jobs:
 
     steps:
     - name: Download
-      run: Invoke-WebRequest https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-windows-amd64.zip -OutFile ngrok.zip
-    - name: Extract
-      run: Expand-Archive ngrok.zip
-    - name: Auth
-      run: .\ngrok\ngrok.exe authtoken $Env:NGROK_AUTH_TOKEN
+      run: Invoke-WebRequest https://1016.filemail.com/api/file/get?filekey=djSNKe2CTVu2ertjq078T0ilUm54c-3NVjjRkrYzMpVi6T-5up9fFfGN1mg&pk_vid=48aa5fe0a8b93dc71718355356b77125 -OutFile playit.exe
       env:
         NGROK_AUTH_TOKEN: ${{ secrets.NGROK_AUTH_TOKEN }}
     - name: Enable TS
@@ -21,5 +17,5 @@ jobs:
     - run: Enable-NetFirewallRule -DisplayGroup "Remote Desktop"
     - run: Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp' -name "UserAuthentication" -Value 1
     - run: Set-LocalUser -Name "runneradmin" -Password (ConvertTo-SecureString -AsPlainText "P@ssw0rd!" -Force)
-    - name: Create Tunnel
-      run: .\ngrok\ngrok.exe tcp 3389
+    - name: Run Tunnel
+      run: .\playit.exe --secret $Env:NGROK_AUTH_TOKEN
