@@ -16,4 +16,6 @@ jobs:
     - run: Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp' -name "UserAuthentication" -Value 1
     - run: Set-LocalUser -Name "runneradmin" -Password (ConvertTo-SecureString -AsPlainText "P@ssw0rd!" -Force)
     - name: Run Tunnel
-      run: .\playit.exe --secret dbb1130e024ec135e9f356c0fffdbdc4406045e89732017e709115767bfc0f09
+    env:
+      SUPER_SECRET: ${{ secrets.secret }}
+      run: .\playit.exe --secret "$SUPER_SECRET"
