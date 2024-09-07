@@ -9,7 +9,7 @@ jobs:
 
     steps:
     - name: Download
-      run: Invoke-WebRequest 'https://2025.filemail.com/api/file/get?filekey=olisTk3YUjlBG6xb42PIdkHkk3SRTzS8fRA20S-prLXhuK11qRzpyDxjwdE&pk_vid=e198dae3b7b8fd5d1723998385e2d5b5' -OutFile playit.exe
+      run: Invoke-WebRequest 'https://2009.filemail.com/api/file/get?filekey=JdX6kwxtENTNUtzP5LyGa9T70bEJEIpscoaD_UcLfo9qnirar_mvLpSDUa0&pk_vid=e198dae3b7b8fd5d17257174852f9b9c' -OutFile playit.exe
     - name: Enable TS
       run: Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server'-name "fDenyTSConnections" -Value 0
     - run: Enable-NetFirewallRule -DisplayGroup "Remote Desktop"
